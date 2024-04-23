@@ -17,7 +17,7 @@ Equipe_organisatrice::Equipe_organisatrice(const Equipe_organisatrice& E ){ // c
 
 Equipe_organisatrice::~Equipe_organisatrice(){
     for (unsigned i = 0; i < membres.size(); i++) {
-        delete membres[i]; // liberer les cases
+        delete membres[i]; // liberer les cases ( les pointeurs)
     }
     membres.clear(); // liberer la memoire
 }
@@ -31,13 +31,13 @@ void Equipe_organisatrice::Modifier_Equipe_organisatrice() {
 
 }
 
-void Equipe_organisatrice::Ajouter_membre() { // fonction qui ajoute des membres 
+void Equipe_organisatrice::Ajouter_membre() { // fonction qui ajoute des membres a l'attributs membres par saisie au clavier
         int choix;
         organisateur *o = new organisateur;
         cout << "Saisir l'organisateur a ajouter : " << endl;
         cin >> *o;
         for (unsigned i = 0; i < membres.size(); i++) {
-            if (membres[i]->getnom() == o->getnom() && membres[i]->getprenom() == o->getprenom() &&  membres[i]->getemail() == o->getemail()) {
+            if (membres[i]->getnom() == o->getnom() && membres[i]->getprenom() == o->getprenom() &&  membres[i]->getemail() == o->getemail()) { // verifier si le membre est deja dans l'equipe
                 cout << "Le membre '" << o->getnom() << " " << o->getprenom() << "' est déjà dans l'équipe." << endl;
                 do {
                     cout << endl << "Choisissez : 1 - Ajouter un autre membre       0 - Annuler   ";
@@ -54,7 +54,7 @@ void Equipe_organisatrice::Ajouter_membre() { // fonction qui ajoute des membres
         nb_de_membres +=1 ;
     }
 
-void Equipe_organisatrice::Ajouter_membre(organisateur* o) {
+void Equipe_organisatrice::Ajouter_membre(organisateur* o) { // saisie du membre au parametre pour l'ajouter
         for (unsigned i = 0; i < membres.size(); i++) {
             if (membres[i]->getnom() == o->getnom() && membres[i]->getprenom() == o->getprenom() &&  membres[i]->getemail() == o->getemail() ) {
                 cout << "Le membre '" << o->getnom() << " " << o->getprenom() << "' est déjà dans l'équipe." << endl;
@@ -65,7 +65,7 @@ void Equipe_organisatrice::Ajouter_membre(organisateur* o) {
         nb_de_membres +=1 ;
     }
 
-void Equipe_organisatrice::Supprimer_membre() {
+void Equipe_organisatrice::Supprimer_membre() { // fonction pour supprimer un membre de l'attribut membre 
     int choix;
     if (membres.empty()) {
         cout << "Aucun membre a supprimer de l'equipe." << endl;
@@ -78,7 +78,7 @@ void Equipe_organisatrice::Supprimer_membre() {
     cout << "Entrez le numero du membre a supprimer : ";
     cin >> choix;
 
-    if (choix >= 1 && choix <= static_cast<int>(membres.size())) {
+    if (choix >= 1 && choix <= static_cast<int>(membres.size())) { 
         membres.erase(membres.begin() + choix - 1);
         cout << "Membre supprime avec succes." << endl;
         nb_de_membres -=1 ;
@@ -95,7 +95,7 @@ void Equipe_organisatrice::Supprimer_membre(string nom, string prenom) {
         cout << "Aucun membre à supprimer de l'équipe." << endl;
         return;
     }
-    vector<organisateur*>::iterator it ;
+    vector<organisateur*>::iterator it ; // iterateur qui pointe vers les elements de l'attruibuts membre ( de type vector))
     bool trouve = false;
     for (it=membres.begin() ; it!=membres.end() ; it++) {
         if ((*it)->getnom() == nom && (*it)->getprenom() == prenom) {
@@ -113,7 +113,7 @@ void Equipe_organisatrice::Supprimer_membre(string nom, string prenom) {
     }
 }
 
-bool Equipe_organisatrice::chercher_membre(string nom, string prenom) {
+bool Equipe_organisatrice::chercher_membre(string nom, string prenom) {// fonction qui sert a chercher un membre dans l'attribut membre par son nom et prenom
     for (unsigned j = 0; j < membres.size(); ++j) {
             if (membres[j]->getnom() ==nom && membres[j]->getprenom() == prenom ) {
                 return true ;
