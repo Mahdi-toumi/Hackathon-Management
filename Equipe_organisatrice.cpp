@@ -1,12 +1,12 @@
 #include<C:\Users\toumi\Desktop\projet c++\Gestion d'un Hachathon\Equipe_organisatrice.h>
 
-int Equipe_organisatrice:: nextID = 1 ;
+int Equipe_organisatrice:: nextID = 1 ; // initialiser le variable nextID a 1
 
-Equipe_organisatrice::Equipe_organisatrice():Id(nextID++){}
+Equipe_organisatrice::Equipe_organisatrice():Id(nextID++){} //initialiser l'attribut id avec la valeur nextID puis nextID va incrementer
 
-Equipe_organisatrice::Equipe_organisatrice( string role ): Id(nextID++),role(role) {}
+Equipe_organisatrice::Equipe_organisatrice( string role ): Id(nextID++),role(role) {} // constructeur de la classe qui initialise l'attribut id a nextID et l'attribut role a la valeur role dans le parametre
 
-Equipe_organisatrice::Equipe_organisatrice(const Equipe_organisatrice& E ){
+Equipe_organisatrice::Equipe_organisatrice(const Equipe_organisatrice& E ){ // const par recopie de la classe 
     this->Id = E.Id;
     this->nb_de_membres = E.nb_de_membres;
     this->role = E.role;
@@ -17,9 +17,9 @@ Equipe_organisatrice::Equipe_organisatrice(const Equipe_organisatrice& E ){
 
 Equipe_organisatrice::~Equipe_organisatrice(){
     for (unsigned i = 0; i < membres.size(); i++) {
-        delete membres[i];
+        delete membres[i]; // liberer les cases
     }
-    membres.clear();
+    membres.clear(); // liberer la memoire
 }
 
 
@@ -31,14 +31,14 @@ void Equipe_organisatrice::Modifier_Equipe_organisatrice() {
 
 }
 
-void Equipe_organisatrice::Ajouter_membre() {
+void Equipe_organisatrice::Ajouter_membre() { // fonction qui ajoute des membres 
         int choix;
         organisateur *o = new organisateur;
         cout << "Saisir l'organisateur a ajouter : " << endl;
         cin >> *o;
         for (unsigned i = 0; i < membres.size(); i++) {
             if (membres[i]->getnom() == o->getnom() && membres[i]->getprenom() == o->getprenom() &&  membres[i]->getemail() == o->getemail()) {
-                cout << "Le membre '" << o->getnom() << " " << o->getprenom() << "' est déjà dans l'équipe." << endl;
+                cout << "Le membre '" << o->getnom() << " " << o->getprenom() << "' est dÃ©jÃ  dans l'Ã©quipe." << endl;
                 do {
                     cout << endl << "Choisissez : 1 - Ajouter un autre membre       0 - Annuler   ";
                     cin >> choix;
@@ -57,7 +57,7 @@ void Equipe_organisatrice::Ajouter_membre() {
 void Equipe_organisatrice::Ajouter_membre(organisateur* o) {
         for (unsigned i = 0; i < membres.size(); i++) {
             if (membres[i]->getnom() == o->getnom() && membres[i]->getprenom() == o->getprenom() &&  membres[i]->getemail() == o->getemail() ) {
-                cout << "Le membre '" << o->getnom() << " " << o->getprenom() << "' est déjà dans l'équipe." << endl;
+                cout << "Le membre '" << o->getnom() << " " << o->getprenom() << "' est dÃ©jÃ  dans l'Ã©quipe." << endl;
                 return;
             }
         }
@@ -92,7 +92,7 @@ void Equipe_organisatrice::Supprimer_membre() {
 
 void Equipe_organisatrice::Supprimer_membre(string nom, string prenom) {
     if (membres.empty()) {
-        cout << "Aucun membre à supprimer de l'équipe." << endl;
+        cout << "Aucun membre Ã  supprimer de l'Ã©quipe." << endl;
         return;
     }
     vector<organisateur*>::iterator it ;
