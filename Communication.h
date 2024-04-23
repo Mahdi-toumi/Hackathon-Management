@@ -19,10 +19,10 @@ class communication {
 public:
     communication();
 
-    communication(int id, utilisateur auteur, string contenu, int nb_dest, string date_envoi);
+    communication(int id, utilisateur auteur, string contenu, int nb_dest, string date_envoi);// constructeur de la classe communication
 
 
-    communication(const communication &c)
+    communication(const communication &c) // constructeur par recopie de la classe communication
     {
         auteur=c.auteur;
         contenu=c.contenu;
@@ -33,7 +33,7 @@ public:
         }
     };
 
-    ~communication();
+    ~communication();// destructeur
 
     friend istream& operator >>(istream& entree,communication& c)
     {
@@ -57,14 +57,14 @@ public:
         cout<<c.date_envoi;
     };
 
-    void ajouter_destin()
+    void ajouter_destin() // fonction qui ajoute  des organisateurs à l'attribut destinataires
     {
         organisateur u;
         cin>>u;
         destinataires.push_back(u);
     };
 
-    bool supprimer_dest(int id1)
+    bool supprimer_dest(int id1) // fonction qui supprime des destinataires de type organisateur de l'attribut destinataire
     {
             for(int i=0;i<destinataires.size();i++)
             {
@@ -77,13 +77,13 @@ public:
             return false;
         };
 
-    void afficher_dest()
+    void afficher_dest() //fonction qui affiche les elements du tableau des destinataires 
     {
         for(unsigned i=0;i<destinataires.size()-1;i++)
         {
             for(unsigned j=0;j<destinataires.size()-i-1;j++)
             {
-                if(destinataires[i].get_nom()>destinataires[j].get_nom())
+                if(destinataires[i].get_nom()>destinataires[j].get_nom()) // algorithme qui met les noms des utilisateurs en ordre alphabetique
                     swap(destinataires[j],destinataires[j+1]);
             }
         }
