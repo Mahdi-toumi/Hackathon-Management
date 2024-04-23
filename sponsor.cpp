@@ -19,7 +19,7 @@ sponsor::~sponsor() {}
 void sponsor::modifier_sponsor() {
     int choix;
 
-    cout << "Que souhaitez-vous modifier ?" << endl;
+    cout << "Que souhaitez-vous modifier ?" << endl; //menu qui sert a choisir lequel des attribut a changer
     cout << "1 - ID" << endl;
     cout << "2 - Nom" << endl;
     cout << "3 - Email" << endl;
@@ -61,7 +61,7 @@ void sponsor::modifier_sponsor() {
             break;
         }
         case 6: {
-            this->ajouter_produit() ;
+            this->ajouter_produit() ; 
             break;
         }
         case 7: {
@@ -107,7 +107,7 @@ ostream& operator <<(ostream& os, sponsor& s) {
 
 
 void sponsor::ajouter_produit() {
-    list<string>::iterator it ;
+    list<string>::iterator it ; // iterateur it qui pointe vers les elements de la liste et fait un parcours séquentiel
     int choix, K = 0;
     string prod;
     cout << endl << " Saisir un produit a ajouter : ";
@@ -137,9 +137,9 @@ void sponsor::ajouter_produit() {
     }
 
 }
-void sponsor::spprimer_produit() {
-    list<string>::iterator it ;
-    if (produits_sponso.empty()) {
+void sponsor::spprimer_produit() { 
+    list<string>::iterator it ; // iterator pour parcourir la liste  de produits
+    if (produits_sponso.empty()) { 
         cout << "Aucune produit a supprimer." << endl;
         return;
     }
@@ -156,7 +156,7 @@ void sponsor::spprimer_produit() {
 
     if (choix >= 1 && choix <= static_cast<int>(produits_sponso.size())) {
         it = produits_sponso.begin();
-        advance(it, choix - 1);
+        advance(it, choix - 1); // avancer l'iterateur it de choix-1 positions dans la liste pour pointer sur l'element a supprimer
         produits_sponso.erase(it);
         cout << "Produits supprimee avec succes." << endl;
     } else {
