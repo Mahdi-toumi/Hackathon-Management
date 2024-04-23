@@ -5,7 +5,7 @@
 
 class Equipe_organisatrice
 {
-    static int nextID ;
+    static int nextID ; // initialisation d'un id statique puis il donne des id uniques et consecutif a chaque objet de la classe
 
     int Id;
 
@@ -16,14 +16,14 @@ class Equipe_organisatrice
 
 public:
 
-    Equipe_organisatrice();
+    Equipe_organisatrice();// constructeur de la classe 
     Equipe_organisatrice(string );
     Equipe_organisatrice(const Equipe_organisatrice&);
     ~Equipe_organisatrice();
 
-    string getrole() {return role ; }
+    string getrole() {return role ; }// fonction qui retourne la valeur de l'attribut role
 
-    void Modifier_Equipe_organisatrice() ;
+    void Modifier_Equipe_organisatrice() ;// fonction qui sert a modifer la valeur de l'un des attributs de la classe 
 
 
     friend ostream& operator<<(ostream& os, Equipe_organisatrice& e) {
@@ -51,10 +51,10 @@ public:
 }
 
 
-    void Ajouter_membre();
+    void Ajouter_membre(); // ajouter un membre a la liste ( vector) des organisateurs
     void Ajouter_membre(organisateur* o);
-    void Supprimer_membre();
-    void Supprimer_membre(string,string);
+    void Supprimer_membre();// supprimer un membre a la liste ( vector) des organisateurs
+    void Supprimer_membre(string,string); 
     bool chercher_membre(string , string );
 
 };
