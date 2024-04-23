@@ -9,7 +9,7 @@ class Date
     int annee;
 
 public:
-    Date(){}
+    Date(){} // constructeur de la classe date
     Date(int jour , int mois , int annee):jour(jour),mois(mois),annee(annee) {};
     ~Date(){};
     friend istream& operator >>(istream& is,Date& d)
