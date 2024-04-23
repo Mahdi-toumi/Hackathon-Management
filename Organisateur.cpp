@@ -8,7 +8,7 @@ void organisateur::modifier() {
     int choix;
     string Q;
     do {
-        cout << endl << "Veuillez choisir l'action � effectuer :" << endl;
+        cout << endl << "Veuillez choisir l'action à effectuer :" << endl;
         cout << "1 - Modifier le nom" << endl;
         cout << "2 - Modifier le prenom" << endl;
         cout << "3 - Modifier l'email" << endl;
@@ -16,7 +16,7 @@ void organisateur::modifier() {
         cout << "0 - Quitter" << endl;
         cout << "Votre choix : ";
         cin >> choix;
-    } while (choix < 0 || choix > 4);
+    } while (choix < 0 || choix > 4); // repeter l'affichage de menu en cas le choix est erroné
 
     switch (choix) {
 
