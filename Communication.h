@@ -1,102 +1,91 @@
-#ifndef COMMUNICATION_H_INCLUDED
-#define COMMUNICATION_H_INCLUDED
-#include <C:\Users\toumi\Desktop\projet c++\Gestion d'un Hachathon\Date.h>
-#include <iostream>
-#include <string>
-#include <vector>
+#include<C:\Users\toumi\Desktop\projet c++\Gestion d'un Hachathon\Message.h>
 
 
+int message::nextId = 1;
 
-using namespace std;
+message::message():id(nextId++) {};
 
-class communication {
-    int id;
-    organisateur* auteur;
-    string contenu;
-    vector<organisateur> destinataires;
-    Date date_envoi;
-
-public:
-    communication();
-
-    communication(int id, utilisateur auteur, string contenu, int nb_dest, string date_envoi);// constructeur de la classe communication
+message::message( string contenu = "" ):id(nextId++){
+    this->contenu=contenu ;
+}
 
 
-    communication(const communication &c) // constructeur par recopie de la classe communication
-    {
-        auteur=c.auteur;
-        contenu=c.contenu;
-        date_envoi=c.date_envoi;
-        for(int i=0;i<c.destinataires.size();i++)
-        {
-            destinataires.push_back(c.destinataires[i]);
-        }
-    };
+istream& operator >>(istream& entree,message& c){
+        cout<<" Saisir la date d'envoie de ce message"<<endl;
+        cin>>c.Date_envoi;
 
-    ~communication();// destructeur
-
-    friend istream& operator >>(istream& entree,communication& c)
-    {
-        organisateur* o;
-        date d;
-        cout<<"saisir id"<<"endl";
-        cin>>c.id;
-        cin>>d;
-        c.date_envoi=d;
-
-        cin>>*o;
-        c.auteur=o;
-        cout<<"saisir le message"<<"endl";
+        cout<<" Saisir le message"<<endl;
         cin>>c.contenu;
 
-    };
-    friend ostream& operator <<(ostream& sortie,communication& c)
-    {
-        cout<<c.auteur->get_nom();
-        cout<<c.contenu;
-        cout<<c.date_envoi;
-    };
-
-    void ajouter_destin() // fonction qui ajoute  des organisateurs à l'attribut destinataires
-    {
-        organisateur u;
-        cin>>u;
-        destinataires.push_back(u);
-    };
-
-    bool supprimer_dest(int id1) // fonction qui supprime des destinataires de type organisateur de l'attribut destinataire
-    {
-            for(int i=0;i<destinataires.size();i++)
-            {
-                if(id1==destinataires[i].get_id())
-                {
-                    destinataires.erase(destinataires.begin()+i);
-                    return true;
-                }
-            }
-            return false;
-        };
-
-    void afficher_dest() //fonction qui affiche les elements du tableau des destinataires 
-    {
-        for(unsigned i=0;i<destinataires.size()-1;i++)
-        {
-            for(unsigned j=0;j<destinataires.size()-i-1;j++)
-            {
-                if(destinataires[i].get_nom()>destinataires[j].get_nom()) // algorithme qui met les noms des utilisateurs en ordre alphabetique
-                    swap(destinataires[j],destinataires[j+1]);
-            }
-        }
-        for(unsigned i=0;i<destinataires.size();i++)
-        {
-            cout<<destinataires[i].get_nom()<<"endl";
-        }
-
-    }
-
-
+        return entree ;
 
 };
 
+ostream& operator <<(ostream& sortie,message& c){
+        sortie<<"Message envoyee dans la date : " << c.Date_envoi <<endl ;
+        sortie<<"Contenue : "<< c.contenu<<endl;
+        return sortie ;
+    };
 
-#endif
+
+
+
+void message::envoyer_message (Hackathon h , vector<message*> Message ) {
+            string nom , prenom ;
+            cout << "Saisir le nom du destinataire : " ; cin >> nom ;
+            cout << "Saisir le prenom du destinataire : " ; cin >> prenom  ;
+            destinataires = h.rechercher_organisateur(nom,prenom)->getid() ; /// Obtient l'identifiant du destinataire a partir du hackathon
+            Message.push_back(this) ; /// Ajoute le message à la fin du vecteur de messages
+        }
+
+void message::afficher_messages (  organisateur* o, vector<message*> Message ){
+            for (unsigned i=0 ; i<Message.size() ; i++) { /// Parcours de tous les messages dans le vecteur
+                if (o->getid()== Message[i]->destinataires  ){ /// Verifie si l'ID de l'organisateur correspond à l'ID du destinataire du message
+                    cout<<this<<endl ; /// Affiche le message actuel
+                    return ;
+                }
+            }
+            cout<<"Pas de message pour le moment ."<<endl ;
+        }
+
+
+
+
+
+void message::creerFichier(const string& nomFichier) {
+            ifstream fichier(nomFichier, ofstream::out | ofstream::trunc);/// Ouverture du fichier en mode ecriture ( effacement du contenu existant)
+
+            if (!fichier.is_open()) {
+                cerr << "Erreur lors de l'ouverture du fichier." << endl;
+                return;
+                }
+
+            cout << "Fichier ouvert avec succes." << endl;
+            fichier.close();
+        }
+
+void message::remplirDansFichier(const string&  nomFichier ) {
+                ofstream fichier(nomFichier, ios::app);      /// Ouverture du fichier en mode append pou l'ajout des donnes
+                if (!fichier.is_open()) {    /// Verification si le fichier est ouvert
+                    cout << "Erreur lors de l'ouverture du fichier en ecriture." << endl;
+                    return;
+                }
+                fichier << *this;   /// Ecriture des informations du participant dans le fichier
+                fichier.close();    /// Fermeture du fichier
+            };
+
+void message::lireFichier(const string& nomFichier ){
+                ifstream fichier(nomFichier);
+                if (!fichier.is_open()) {
+                    cout << "Erreur lors de l'ouverture du fichier en lecture." << endl;
+                    return;
+                }
+                string ligne;
+                while (getline(fichier, ligne)) { /// Lecture de chaque ligne du fichier et la stocker dans la variable ligne
+                    cout << ligne << endl;  /// Affichage de chaque ligne
+                }
+                fichier.close();
+            }
+
+
+
