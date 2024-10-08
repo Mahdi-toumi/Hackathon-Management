@@ -1,19 +1,17 @@
-# Gestion d'un Hackathon
+# Hackathon Management System
 
-Ce projet implémente un système de gestion complet pour un hackathon, développé en C++. Il fournit une plateforme intuitive pour les organisateurs, participants, juges, et sponsors afin de rationaliser les processus et automatiser les tâches courantes.
+This project implements a complete management system for a hackathon, developed in C++. It provides an intuitive platform for organizers, participants, judges, and sponsors to streamline processes and automate common tasks.
 
-## Fonctionnalités
+## Features
 
-- **Gestion des utilisateurs** : Création et gestion des profils des participants, juges, organisateurs, et sponsors.
-- **Organisation des équipes** : Formation, modification, et gestion des équipes de participants.
-- **Suivi des projets** : Enregistrement des projets soumis, gestion des critères de jugement, et attribution de notes.
-- **Communication interne** : Système de messagerie entre les organisateurs et les participants/juges.
-- **Soutien aux sponsors** : Gestion des sponsors et des produits sponsorisés.
+- **User Management**: Create and manage profiles for participants, judges, organizers, and sponsors.
+- **Team Organization**: Formation, modification, and management of participant teams.
+- **Project Tracking**: Record submitted projects, manage judging criteria, and assign scores.
+- **Internal Communication**: Messaging system between organizers and participants/judges.
+- **Sponsor Support**: Manage sponsors and sponsored products.
 
-## Technologies utilisées
+## Technologies Used
 
-- **Langage** : C++
-- **Modélisation** : Utilisation de diagrammes de classes et de cas d'utilisation pour structurer l'application.
-- **Structure de données** : Utilisation de vecteurs, listes, et maps pour gérer les entités et leurs relations.
-
-
+- **Language**: C++
+- **Modeling**: Used class and use case diagrams to structure the application.
+- **Data Structures**: Utilized vectors, lists, and maps to manage entities and their relationships.
