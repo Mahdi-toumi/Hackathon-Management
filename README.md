@@ -16,8 +16,4 @@ Ce projet implémente un système de gestion complet pour un hackathon, dévelop
 - **Modélisation** : Utilisation de diagrammes de classes et de cas d'utilisation pour structurer l'application.
 - **Structure de données** : Utilisation de vecteurs, listes, et maps pour gérer les entités et leurs relations.
 
-## Installation et utilisation
 
-1. **Cloner le dépôt** sur votre machine locale :
-   ```bash
-   git clone <URL-du-répository>
