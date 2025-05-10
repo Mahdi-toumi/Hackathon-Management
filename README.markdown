@@ -44,7 +44,7 @@ The Hackathon Management System is a C++ application designed to streamline the 
    - C++ compiler (e.g., g++ or MinGW)
    - Standard C++ libraries
 2. **Setup**:
-   - Clone the repository: `git clone https://github.com/yourusername/hackathon-management.git`
+   - Clone the repository: `git clone https://github.com/Mahdi-toumi/Hackathon-Management.git`
    - Navigate to the project directory: `cd hackathon-management`
 3. **Compile and Run**:
    - Compile the source files: `g++ *.cpp -o hackathon`
