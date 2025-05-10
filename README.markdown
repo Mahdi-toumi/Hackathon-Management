@@ -121,8 +121,5 @@ The Hackathon Management System is a C++ application designed to streamline the 
 - **Mahdi TOUMI**: Lead developer, system design, and implementation.
 - **Hadil TRABELSI**: Co-developer, system design, and testing.
 
-## License
-This project is licensed under the MIT License. See the `LICENSE` file for details.
-
 ## Acknowledgments
 Developed as part of a C++ project for the Computer Engineering Department at ENICarthage during the 2023/2024 academic year. Special thanks to the faculty and peers for their support and feedback.
